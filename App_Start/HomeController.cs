@@ -8,18 +8,24 @@ namespace testowanie.App_Start
 {
     public class HomeController : Controller
     {
-        [HttpGet]
+      
         // GET: Home
         public ActionResult Index()
         {
-            var dataContext = new BazaTestEntities();
-            var osoby = dataContext.osoba.ToList();
-            string lista = "";
-          foreach (var n in dataContext.osoba){
-                lista += n;
-            }
-            Console.WriteLine(lista);
-            return View(osoby);
+          //  var dataContext = new BazaTestEntities();
+          //  var osoby = dataContext.osoba.ToList();
+          //  string lista = "";
+          //foreach (var n in dataContext.osoba){
+          //      lista += n;
+          //  }
+          //  Console.WriteLine(lista);
+            return View();
+        }
+        public JsonResult GetData()
+        {
+            var db = new BazaTestEntities();
+            var osoby = db.osoba.ToList();
+            return Json(osoby, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Home/Details/5
